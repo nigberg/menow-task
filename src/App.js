@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Main from './components/Main/Main';
+import * as api from './utils/api';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [ cardsToShow, setCardsToShow ] = useState([]);  
+
+  useEffect(() => {
+    getRandomCards();
+  }, [])
+  
+  const getRandomCards = () => {    
+    setCardsToShow(api.getRandomCards());      
+  }  
+
+  const search = (keyword) => {    
+    setCardsToShow(api.searchByKeyword(keyword));   
+  }  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Header/>
+    <Main onRandomCardsLoadClick={getRandomCards} onSearchClick={search} cardsToShow={cardsToShow}/>
+    <Footer/>         
     </div>
   );
 }

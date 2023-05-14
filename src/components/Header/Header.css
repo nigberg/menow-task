@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border-bottom: 1px wheat solid;     
+}
+.header__title{
+    font-size: 36;
+}
