@@ -5,7 +5,9 @@ const Gallery = ({cardsToShow}) => {
     return (
         <section className='gallery'>
             {cardsToShow.length ===0 && <p className='gallery__nothing-found'>Nothing found...</p>}
-            {cardsToShow.map(card => <Card key={card.id} card={card}/>)}
+            <ul className='gallery__cards'>
+            {cardsToShow.map(card => <li key={card.id}> <Card card={card}/> </li>)}
+            </ul>
         </section>
     );
 
